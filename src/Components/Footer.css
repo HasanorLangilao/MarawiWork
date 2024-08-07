@@ -1,0 +1,132 @@
+/* Ensure html and body are full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Flex container to ensure footer sticks to the bottom */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content area */
+.wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Footer styles */
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: #272525;
+    color: white;
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.footer-middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.footer-slogan {
+    font-size: 14px;
+    color: #d1d1d1;
+    margin-bottom: 10px;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 20px;
+    padding: 10px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-icon {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.footer-icon.fb-icon:hover {
+    color: #2d68c4;
+}
+
+.footer-icon.twitter-icon:hover {
+    color: #1da1f2;
+}
+
+.footer-icon.yt-icon:hover {
+    color: #ff0000;
+}
+
+.footer-icon.ig-icon:hover {
+    color: #c13584;
+}
+
+.footer-copyright {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .footer {
+        padding: 20px;
+    }
+
+    .footer-title {
+        font-size: 20px;
+    }
+
+    .footer-slogan {
+        font-size: 12px;
+    }
+
+    .footer-icons {
+        gap: 15px;
+    }
+
+    .footer-icon {
+        font-size: 20px;
+    }
+
+    .footer-copyright {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-title {
+        font-size: 18px;
+    }
+
+    .footer-slogan {
+        font-size: 10px;
+    }
+
+    .footer-icons {
+        gap: 10px;
+    }
+
+    .footer-icon {
+        font-size: 18px;
+    }
+
+    .footer-copyright {
+        font-size: 10px;
+    }
+}

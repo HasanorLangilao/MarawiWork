@@ -1,0 +1,541 @@
+.Jobhero {
+  text-align: center;
+  color: rgba(24, 23, 23, 0.74);
+  margin-top: 45px;
+  font-size: 25px;
+}
+.home-hero{
+  text-align: center;
+  text-align: center;
+  color: rgba(24, 23, 23, 0.74);
+  margin-top: 60px;
+  font-size: 25px;
+}
+
+
+.featured-jobs-container {
+  padding: 1rem;
+}
+
+.title-container {
+  padding-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.jobs-list {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.job-item {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  width: 250px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.job-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.job-content {
+  display: flex;
+  gap: 1rem;
+}
+
+.job-logo {
+  width: 60px;
+}
+
+.logo-img {
+  width: 100%;
+}
+
+.job-details {
+  flex: 1;
+}
+
+.job-title {
+  font-size: 1.25rem;
+}
+
+.company-name {
+  font-size: 1rem;
+}
+
+.job-description {
+  font-size: 0.875rem;
+  color: #555;
+}
+
+.job-info {
+  font-size: 0.75rem;
+  color: #777;
+}
+
+
+
+
+/*Profile*/
+/* Container to center the profile box */
+/* Ensure the profile-wrapper takes up full viewport height and centers content */
+.profile-wrapper {
+  margin-bottom: 0; /* Reset margin to avoid extra space at the bottom */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full height of the viewport */
+  padding: 20px;
+}
+
+/* Profile box styles */
+.profile-box {
+  margin-top: -190px;
+  width: 100%;
+  max-width: 1200px; /* Adjust width as needed */
+  padding: 30px;
+  background-color: #fff; /* Background color of the box */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Container for profile sections */
+.profile-container {
+  display: flex;
+  flex-direction: row; /* Default to row layout for larger screens */
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+/* Profile left section */
+.profile-left {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.profile-left h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 35px;
+}
+
+.profile-pic-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.profile-pic {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.camera-icon {
+  font-size: 1.5rem;
+  color: #272525;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  transition: color 0.3s;
+}
+
+.camera-icon:hover {
+  color: #404040;
+}
+
+.file-input {
+  display: none;
+}
+
+.edit-profile-btn {
+  padding: 10px 20px;
+  background-color: #272525;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.edit-profile-btn:hover {
+  background-color: #404040;
+}
+
+/* Profile right section */
+.profile-right {
+  margin-top: 125px;
+  padding-left: 20px;
+  width: 100%;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+  width: 100%;
+}
+
+.profile-right h3 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.profile-right p {
+  font-size: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.profile-right p svg {
+  margin-right: 8px;
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-form label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.edit-form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.save-profile-btn, .cancel-profile-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.save-profile-btn {
+  background-color: #404040;
+  color: white;
+}
+
+.cancel-profile-btn {
+  background-color: #404040;
+  color: white;
+}
+
+.save-profile-btn:hover {
+  background-color: #555a56;
+}
+
+.cancel-profile-btn:hover {
+  background-color: #555a56;
+}
+
+/* Profile actions section */
+.profile-actions {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.delete-account-btn, .change-password-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.delete-account-btn {
+  background-color: #404040;
+  color: white;
+}
+
+.change-password-btn {
+  background-color: #2980b9;
+  color: white;
+}
+
+.delete-account-btn:hover {
+  background-color: #404040;
+}
+
+.change-password-btn:hover {
+  background-color: #3498db;
+}
+
+/* Media queries for responsiveness */
+
+/* Adjust layout for medium screens (tablets) */
+@media (max-width: 1024px) {
+  .profile-container {
+    flex-direction: column; /* Stack sections vertically */
+  }
+
+  .profile-left, .profile-right {
+    margin-top: 0; /* Reset margin to align vertically */
+    width: 100%;
+    padding: 0; /* Reset padding for smaller screens */
+  }
+
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile-left h2 {
+    font-size: 24px;
+  }
+
+  .profile-right h3 {
+    font-size: 24px;
+  }
+
+  .profile-right p {
+    font-size: 18px;
+  }
+
+  .edit-form input {
+    font-size: 16px;
+  }
+
+  .save-profile-btn, .cancel-profile-btn, .delete-account-btn, .change-password-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+/* Adjust layout for small screens (mobile phones) */
+@media (max-width: 768px) {
+  .profile-left {
+    margin-top: 20px;
+  }
+
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-left h2 {
+    font-size: 20px;
+  }
+
+  .profile-right h3 {
+    font-size: 20px;
+  }
+
+  .profile-right p {
+    font-size: 16px;
+  }
+
+  .edit-form input {
+    font-size: 14px;
+  }
+
+  .save-profile-btn, .cancel-profile-btn, .delete-account-btn, .change-password-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+
+
+
+
+
+/* src/Notifications.css */
+.notifications-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.notifications-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.notifications-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notifications-list li {
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.notifications-list li:last-child {
+  border-bottom: none;
+}
+
+.read {
+  background-color: #f9f9f9;
+}
+
+.unread {
+  background-color: #fff;
+  border-left: 5px solid #404040;
+}
+
+.notification-content {
+  margin-bottom: 10px;
+}
+
+.notification-message {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.notification-timestamp {
+  font-size: 14px;
+  color: #666;
+}
+
+.mark-as-read-button {
+  background-color: #404040;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.mark-as-read-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .notifications-container {
+    padding: 15px; /* Reduce padding on smaller screens */
+  }
+
+  .notifications-header {
+    flex-direction: column; /* Stack header items vertically */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .notifications-list li {
+    padding: 15px; /* Reduce padding on list items */
+  }
+}
+
+@media (max-width: 480px) {
+  .notifications-container {
+    padding: 10px; /* Further reduce padding on very small screens */
+    margin: 20px; /* Adjust margin for smaller screens */
+  }
+
+  .notification-message {
+    font-size: 14px; /* Reduce font size */
+  }
+
+  .notification-timestamp {
+    font-size: 12px; /* Reduce font size */
+  }
+
+  .mark-as-read-button {
+    padding: 8px 15px; /* Reduce padding for smaller screens */
+    font-size: 12px; /* Reduce font size */
+  }
+}
+
+
+
+
+/* src/Components/MyApplications.css */
+
+.my-applications-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-filter-container input[type="search"] {
+  width: 60%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+.search-filter-container select {
+  width: 20%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+.applications-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.applications-list li {
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.applications-list li:last-child {
+  border-bottom: none;
+}
+
+.application-content {
+  margin-bottom: 10px;
+}
+
+.application-content h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.application-content p {
+  font-size: 14px;
+  color: #666;
+}
