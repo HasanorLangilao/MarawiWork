@@ -10,7 +10,7 @@ import EmployerHome from './Components/Employer/emphome';
 import Applications from './Components/Jobseeker/applications';
 import SeekerProf from './Components/Jobseeker/seekerprofile';
 import SeekerNotif from './Components/Jobseeker/seeknotifications';
-import Seekjobs from './Components/Jobseeker/seekjobs'
+import Seekjobs from './Components/Jobseeker/seekjobs';
 import About from './Components/about';
 import Jobmap from './Components/Jobmap';
 import Applicants from './Components/Employer/applicants';
@@ -26,7 +26,7 @@ const App = () => {
   const [userType, setUserType] = useState(null);
 
   useEffect(() => {
-    const storedUserType = localStorage.getItem('npm run de');
+    const storedUserType = localStorage.getItem('userType');
     if (storedUserType) {
       setUserType(storedUserType);
     }
@@ -46,54 +46,58 @@ const App = () => {
 
   return (
     <Router>
-      <Navbar userType={userType} onLogout={handleLogout} />
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/signin" element={<SignIn handleClose={() => {}} setUserType={handleLogin} />} />
-        <Route path="/Employeesignup" element={<EmployeeAccount />} />
-        <Route path="/Employersignup" element={<EmployerAccount />} />
+      <div className="flex flex-col min-h-screen">
+        <Navbar userType={userType} onLogout={handleLogout} />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/signin" element={<SignIn handleClose={() => {}} setUserType={handleLogin} />} />
+            <Route path="/Employeesignup" element={<EmployeeAccount />} />
+            <Route path="/Employersignup" element={<EmployerAccount />} />
 
-        {userType === 'jobseeker' && (
-          <>
-            <Route path="/seekhome" element={<JobseekerHome />} />
-            <Route path="/seekjobs" element={<Seekjobs />} />
-            <Route path="/applications" element={<Applications />} />
-            <Route path="/seekerprofile" element={<SeekerProf />} />
-            <Route path="/seeknotifications" element={<SeekerNotif />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/Jobmap" element={<Jobmap />} />
-          </>
-        )}
+            {userType === 'jobseeker' && (
+              <>
+                <Route path="/seekhome" element={<JobseekerHome />} />
+                <Route path="/seekjobs" element={<Seekjobs />} />
+                <Route path="/applications" element={<Applications />} />
+                <Route path="/seekerprofile" element={<SeekerProf />} />
+                <Route path="/seeknotifications" element={<SeekerNotif />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/Jobmap" element={<Jobmap />} />
+              </>
+            )}
 
-        {userType === 'employer' && (
-          <>
-            <Route path="/emphome" element={<EmployerHome />} />
-            <Route path="/applicants" element={<Applicants />} />
-            <Route path="/empnotifications" element={<Empnotif />} />
-            <Route path="/empprofile" element={<Empprofile />} />
-            <Route path="/postajob" element={<PostaJob />} />
-            <Route path="/about" element={<About />} />
-          </>
-        )}
+            {userType === 'employer' && (
+              <>
+                <Route path="/emphome" element={<EmployerHome />} />
+                <Route path="/applicants" element={<Applicants />} />
+                <Route path="/empnotifications" element={<Empnotif />} />
+                <Route path="/empprofile" element={<Empprofile />} />
+                <Route path="/postajob" element={<PostaJob />} />
+                <Route path="/about" element={<About />} />
+              </>
+            )}
 
-        {userType === 'admin' && (
-          <>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/jobs" element={<Jobs />} />
-          </>
-        )}
+            {userType === 'admin' && (
+              <>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/users" element={<Users />} />
+                <Route path="/jobs" element={<Jobs />} />
+              </>
+            )}
 
-        {/* Default redirection to home or landing page */}
-        <Route path="/home" element={
-          userType === 'jobseeker' ? <Navigate to="/seekhome" /> :
-          userType === 'employer' ? <Navigate to="/emphome" /> :
-          userType === 'admin' ? <Navigate to="/dashboard" /> :
-          <Navigate to="/" />
-        } />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-      {userType && <Footer />} {/* Conditionally render Footer */}
+            {/* Default redirection to home or landing page */}
+            <Route path="/home" element={
+              userType === 'jobseeker' ? <Navigate to="/seekhome" /> :
+              userType === 'employer' ? <Navigate to="/emphome" /> :
+              userType === 'admin' ? <Navigate to="/dashboard" /> :
+              <Navigate to="/" />
+            } />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </main>
+        {userType && <Footer />} {/* Conditionally render Footer */}
+      </div>
     </Router>
   );
 };

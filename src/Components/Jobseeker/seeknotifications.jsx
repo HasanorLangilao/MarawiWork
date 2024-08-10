@@ -1,9 +1,6 @@
-// src/Components/Notifications.js
-
 import React, { useState, useEffect } from 'react';
-import './jobseeker.css';
 
-function seeknotifications() {
+function SeekNotifications() {
   const [notifications, setNotifications] = useState([
     {
       id: 1,
@@ -47,23 +44,28 @@ function seeknotifications() {
   };
 
   return (
-    <div className="notifications-container">
-      <h1>Notifications</h1>
-      <div className="notifications-header">
-        <span>Unread: {unreadCount}</span>
+    <div className="max-w-[1200px] w-full mx-auto my-10 p-5 bg-gray-100 border border-gray-300 rounded-lg shadow-md">
+      <h1 className="text-2xl font-bold mb-5">Notifications</h1>
+      <div className="flex justify-between items-center mb-5">
+        <span className="text-lg">Unread: {unreadCount}</span>
       </div>
-      <ul className="notifications-list">
+      <ul className="list-none p-0 m-0">
         {notifications.map((notification) => (
-          <li key={notification.id} className={notification.read ? 'read' : 'unread'}>
-            <div className="notification-content">
-              <p className="notification-message">{notification.message}</p>
-              <p className="notification-timestamp">
+          <li
+            key={notification.id}
+            className={`p-4 border-b border-gray-300 ${
+              notification.read ? 'bg-gray-100' : 'bg-white border-l-4 border-gray-700'
+            }`}
+          >
+            <div className="mb-2">
+              <p className="text-lg font-semibold mb-1">{notification.message}</p>
+              <p className="text-sm text-gray-600">
                 {new Date(notification.timestamp).toLocaleString()}
               </p>
             </div>
             {!notification.read && (
               <button
-                className="mark-as-read-button"
+                className="bg-gray-700 text-white py-2 px-4 text-sm rounded hover:bg-gray-600"
                 onClick={() => handleMarkAsRead(notification.id)}
               >
                 Mark as Read
@@ -76,4 +78,4 @@ function seeknotifications() {
   );
 }
 
-export default seeknotifications;
+export default SeekNotifications;

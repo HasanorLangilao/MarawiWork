@@ -1,17 +1,12 @@
 import React from 'react';
-import { IoSearchCircle } from "react-icons/io5";
+import Searchbar from '../Landingpage/searchbar'
 
 const Home = () => {
   return (
-    <section className='Jobhero'>
-      <h1>WELCOME TO MARAWI-WORK</h1>
-      <p>Job Search Made Easy: We connect you with Job Opportunities</p>
-      <div className='search-bar'>
-        <input type='text' placeholder='Search for jobs...' className='search-input' />
-        <button type='button' className='search-icon'>
-          <IoSearchCircle />
-        </button>
-      </div>
+    <section className='text-center  text-gray-800 mt-[45px] text-[25px]'>
+      <h1 className ='font-bold text-[30px]'> WELCOME TO MARAWI-WORK</h1>
+      <p className= 'text-[23px]'>Job Search Made Easy: We connect you with Job Opportunities</p>
+      <Searchbar />
     </section>
   );
 }

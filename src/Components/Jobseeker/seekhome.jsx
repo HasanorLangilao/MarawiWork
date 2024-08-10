@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './jobseeker.css';
+import './../../index.css';
 
 // Example function to format the date
 const convertDateFormat = (date) => {
@@ -27,36 +27,36 @@ const Seekhome = () => {
   }, []);
 
   return (
-    <section className='home-hero'>
-      <h1>WELCOME TO MARAWI-WORK</h1>
-      <p>Job Search Made Easy: We connect you with Job Opportunities</p>
+    <section className='text-center text-gray-800 mt-[45px] text-[25px]'>
+      <h1 className = 'font-bold text-[30px]'>WELCOME TO MARAWI-WORK</h1>
+      <p className = 'text-[23px]'>Job Search Made Easy: We connect you with Job Opportunities</p>
       
-      <div className='featured-jobs-container'>
-        <div className='title-container'>
-          <p className='title'>Featured Jobs</p>
+      <div className='p-4'>
+        <div className='pb-4 text-2xl'>
+          <p className='font-bold'>Featured Jobs</p>
         </div>
-        <div className='jobs-list'>
+        <div className='flex gap-4 flex-wrap'>
           {jobs && jobs.length >= 3 ? (
             jobs.slice(0, 3).map((job, index) => (
               <Link
                 key={index}
                 to={`/details/${job._id}`}
-                className='job-item'
+                className='border border-gray-300 p-4 w-[250px] shadow-md transition-transform duration-200 hover:scale-105 hover:shadow-lg'
               >
-                <div className='job-content'>
-                  <div className='job-logo'>
-                    <img src={job.companyLogo.url} alt={job.title} className='logo-img' />
+                <div className='flex gap-4'>
+                  <div className='w-[60px]'>
+                    <img src={job.companyLogo.url} alt={job.title} className='w-full' />
                   </div>
-                  <div className='job-details'>
-                    <p className='job-title'>{job.title}</p>
-                    <p className='company-name'>{job.companyName}</p>
-                    <p className='job-description'>{job.description.slice(0, 30) + "..."}</p>
+                  <div className='flex-1'>
+                    <p className='text-xl font-semibold'>{job.title}</p>
+                    <p className='text-lg font-medium'>{job.companyName}</p>
+                    <p className='text-sm text-gray-600'>{job.description.slice(0, 30) + "..."}</p>
                   </div>
                 </div>
-                <div className='job-info'>
-                  <span className='job-date'>{convertDateFormat(job.createdAt.slice(0, 10))}</span>
-                  <span className='job-type'>{job.employmentType}</span>
-                  <span className='job-location'>{job.location}</span>
+                <div className='text-xs text-gray-500 mt-2'>
+                  <span className='block'>{convertDateFormat(job.createdAt.slice(0, 10))}</span>
+                  <span className='block'>{job.employmentType}</span>
+                  <span className='block'>{job.location}</span>
                 </div>
               </Link>
             ))

@@ -1,9 +1,7 @@
-// src/Components/MyApplications.js
-
 import React, { useState, useEffect } from 'react';
-import './jobseeker.css';
+import './../../index.css'
 
-function applications() {
+function Applications() {
   const [applications, setApplications] = useState([
     {
       id: 1,
@@ -50,25 +48,35 @@ function applications() {
   };
 
   return (
-    <div className="my-applications-container">
-      <h1>My Applications</h1>
-      <div className="search-filter-container">
-        <input type="search" value={searchTerm} onChange={handleSearch} placeholder="Search by job title or company name" />
-        <select value={statusFilter} onChange={handleStatusFilter}>
+    <div className="max-w-[1200px] mx-auto my-10 p-5 bg-gray-100 border border-gray-300 rounded-lg shadow-md">
+      <h1 className="text-2xl font-bold mb-5">My Applications</h1>
+      <div className="flex justify-between items-center mb-5">
+        <input
+          type="search"
+          value={searchTerm}
+          onChange={handleSearch}
+          placeholder="Search by job title or company name"
+          className="w-3/5 p-2 text-lg border border-gray-300 rounded"
+        />
+        <select
+          value={statusFilter}
+          onChange={handleStatusFilter}
+          className="w-1/5 p-2 text-lg border border-gray-300 rounded"
+        >
           <option value="all">All</option>
           <option value="Applied">Applied</option>
           <option value="Interview Scheduled">Interview Scheduled</option>
           <option value="Rejected">Rejected</option>
         </select>
       </div>
-      <ul className="applications-list">
+      <ul className="list-none p-0 m-0">
         {filteredApplications.map((application) => (
-          <li key={application.id}>
-            <div className="application-content">
-              <h2>{application.jobTitle}</h2>
-              <p>Company: {application.companyName}</p>
-              <p>Application Date: {new Date(application.applicationDate).toLocaleString()}</p>
-              <p>Status: {application.status}</p>
+          <li key={application.id} className="p-5 border-b border-gray-300 last:border-b-0">
+            <div className="mb-3">
+              <h2 className="text-xl font-bold mb-1">{application.jobTitle}</h2>
+              <p className="text-sm text-gray-600">Company: {application.companyName}</p>
+              <p className="text-sm text-gray-600">Application Date: {new Date(application.applicationDate).toLocaleString()}</p>
+              <p className="text-sm text-gray-600">Status: {application.status}</p>
             </div>
           </li>
         ))}
@@ -77,4 +85,4 @@ function applications() {
   );
 }
 
-export default applications;
+export default Applications;

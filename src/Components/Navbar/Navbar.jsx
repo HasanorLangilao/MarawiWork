@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.css';
 import Logo from '../../assets/Logo.png';
-import { FaSignInAlt, FaSuitcase, FaBars, FaTimes, FaUser, FaBell, FaClipboardList, FaSignOutAlt } from 'react-icons/fa'; // Import additional icons
+import { FaSignInAlt, FaSuitcase, FaBars, FaTimes, FaUser, FaBell, FaClipboardList, FaSignOutAlt } from 'react-icons/fa';
 
 const Navbar = ({ userType, onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,91 +21,148 @@ const Navbar = ({ userType, onLogout }) => {
   };
 
   return (
-    <nav className="navbar">
-      <div className="logo-container">
-        <img src={Logo} alt="Logo" className="logo" />
+    <nav className="flex justify-between items-center h-[10vh] bg-[#272525] text-white px-5 relative z-40">
+      <div className="flex items-center">
+        <img src={Logo} alt="Logo" className="w-[250px] h-auto" />
       </div>
-      <ul className={`nav-links ${isOpen ? 'nav-links-mobile open' : ''}`}>
+      <ul className={`flex list-none items-center ${isOpen ? 'fixed top-0 left-0 w-full h-full flex-col bg-[#272525] justify-center items-center z-50' : 'hidden'} md:flex md:static md:flex-row md:h-auto md:bg-transparent md:translate-y-0`}>
         {isOpen && (
-          <li className="mobile-logo">
-            <img src={Logo} alt="Logo" className="logo" />
+          <li className="mb-6 md:hidden">
+            <img src={Logo} alt="Logo" className="w-[250px]" />
           </li>
         )}
         {!userType ? (
           <>
-            <li><Link to="/signin" className="btn-link" onClick={closeMenu}>
-              <FaSignInAlt className="icon" /> Sign In
-            </Link></li>
-            <li><Link to="/Employeesignup" className="btn-link" onClick={closeMenu}>
-              <FaSuitcase className="icon" /> Register
-            </Link></li>
+            <li className="mb-5 md:mb-0 md:ml-8">
+              <Link to="/signin" className="flex items-center text-white no-underline font-medium text-lg border border-white bg-white text-[#131212] py-2 px-4 rounded-full hover:text-[#365c36]" onClick={closeMenu}>
+                <FaSignInAlt className="mr-2" /> Sign In
+              </Link>
+            </li>
+            <li className="md:ml-8">
+              <Link to="/Employeesignup" className="flex items-center text-white no-underline font-medium text-lg border border-white bg-white text-[#131212] py-2 px-4 rounded-full hover:text-[#365c36]" onClick={closeMenu}>
+                <FaSuitcase className="mr-2" /> Register
+              </Link>
+            </li>
           </>
         ) : userType === 'jobseeker' ? (
           <>
-            <li><Link to="/seekhome" className='link' onClick={closeMenu}>Home</Link></li>
-            <li><Link to="/seekjobs" className='link' onClick={closeMenu}>Jobs</Link></li>
-            <li><Link to="/Jobmap" className='link' onClick={closeMenu}>Job Map</Link></li>
-            <li><Link to="/about" className='link' onClick={closeMenu}>About</Link></li>
-            <li className="dropdown">
-              <button className="dropdown-toggle link" onClick={toggleDropdown}>
-                <FaUser className="icon" />
+            <li className="mb-5 md:mb-0 md:ml-8">
+              <Link to="/seekhome" className="flex justify-center items-center text-white no-underline mr-2 hover:text-[#365c36]" onClick={closeMenu}>Home</Link>
+            </li>
+            <li className="mb-5 md:mb-0 md:ml-8">
+              <Link to="/seekjobs" className="flex justify-center items-center text-white no-underline mr-2 hover:text-[#365c36]" onClick={closeMenu}>Jobs</Link>
+            </li>
+            <li className="mb-5 md:mb-0 md:ml-8">
+              <Link to="/Jobmap" className="flex justify-center items-center text-white no-underline mr-2 hover:text-[#365c36]" onClick={closeMenu}>Job Map</Link>
+            </li>
+            <li className="mb-5 md:mb-0 md:ml-8">
+              <Link to="/about" className="flex justify-center items-center text-white no-underline mr-2 hover:text-[#365c36]" onClick={closeMenu}>About</Link>
+            </li>
+            <li className="relative inline-block">
+              <button className="flex justify-center items-center text-white no-underline mr-2 hover:text-[#365c36]" onClick={toggleDropdown}>
+                <FaUser className="mr-2" />
               </button>
               {isDropdownOpen && (
-                <ul className="dropdown-menu">
-                  <li><Link to="/seekerprofile" className='dropdown-link' onClick={closeMenu}><FaUser className="icon" /> Profile</Link></li>
-                  <li><Link to="/seeknotifications" className='dropdown-link' onClick={closeMenu}><FaBell className="icon" /> Notifications</Link></li>
-                  <li><Link to="/applications" className='dropdown-link' onClick={closeMenu}><FaClipboardList className="icon" /> My Applications</Link></li>
-                  <li><button className='dropdown-link' onClick={() => { onLogout(); closeMenu(); }}><FaSignOutAlt className="icon"/>Log out</button></li>
+                <ul className="absolute right-0 mt-2 bg-white shadow-lg z-50 w-40 text-black list-none p-0 rounded-md">
+                  <li>
+                    <Link to="/seekerprofile" className="flex items-center px-4 py-2 hover:bg-gray-200" onClick={closeMenu}>
+                      <FaUser className="mr-2" /> Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/seeknotifications" className="flex items-center px-4 py-2 hover:bg-gray-200" onClick={closeMenu}>
+                      <FaBell className="mr-2" /> Notifications
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/applications" className="flex items-center px-4 py-2 hover:bg-gray-200" onClick={closeMenu}>
+                      <FaClipboardList className="mr-2" /> My Applications
+                    </Link>
+                  </li>
+                  <li>
+                    <button className="flex items-center w-full text-left px-4 py-2 hover:bg-gray-200" onClick={() => { onLogout(); closeMenu(); }}>
+                      <FaSignOutAlt className="mr-2" /> Log out
+                    </button>
+                  </li>
                 </ul>
               )}
             </li>
           </>
         ) : userType === 'employer' ? (
           <>
-            <li><Link to="/emphome" className='link' onClick={closeMenu}>Home</Link></li>
-            <li><Link to="/postajob" className='link' onClick={closeMenu}>Post a Job</Link></li>
-            <li><Link to="/applicants" className='link' onClick={closeMenu}>Applicants</Link></li>
-            <li><Link to="/about" className='link' onClick={closeMenu}>About</Link></li>
-            <li className="dropdown">
-              <button className="dropdown-toggle link" onClick={toggleDropdown}>
-                <FaUser className="icon" />
+            <li className="mb-5 md:mb-0 md:ml-8">
+              <Link to="/emphome" className="flex justify-center items-center text-white no-underline mr-2 hover:text-[#365c36]" onClick={closeMenu}>Home</Link>
+            </li>
+            <li className="mb-5 md:mb-0 md:ml-8">
+              <Link to="/postajob" className="flex justify-center items-center text-white no-underline mr-2 hover:text-[#365c36]" onClick={closeMenu}>Post a Job</Link>
+            </li>
+            <li className="mb-5 md:mb-0 md:ml-8">
+              <Link to="/applicants" className="flex justify-center items-center text-white no-underline mr-2 hover:text-[#365c36]" onClick={closeMenu}>Applicants</Link>
+            </li>
+            <li className="mb-5 md:mb-0 md:ml-8">
+              <Link to="/about" className="flex justify-center items-center text-white no-underline mr-2 hover:text-[#365c36]" onClick={closeMenu}>About</Link>
+            </li>
+            <li className="relative inline-block">
+              <button className="flex justify-center items-center text-white no-underline mr-2 hover:text-[#365c36]" onClick={toggleDropdown}>
+                <FaUser className="mr-2" />
               </button>
               {isDropdownOpen && (
-                <ul className="dropdown-menu">
-                  <li><Link to="/empprofile" className='dropdown-link' onClick={closeMenu}><FaUser className="icon" /> Profile</Link></li>
-                  <li><Link to="/empnotifications" className='dropdown-link' onClick={closeMenu}><FaBell className="icon" /> Notifications</Link></li>
-                  <li><button className='dropdown-link' onClick={() => { onLogout(); closeMenu(); }}><FaSignOutAlt className="icon"/>Log out</button></li>
+                <ul className="absolute right-0 mt-2 bg-white shadow-lg z-50 w-40 text-black list-none p-0 rounded-md">
+                  <li>
+                    <Link to="/empprofile" className="flex items-center px-4 py-2 hover:bg-gray-200" onClick={closeMenu}>
+                      <FaUser className="mr-2" /> Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/empnotifications" className="flex items-center px-4 py-2 hover:bg-gray-200" onClick={closeMenu}>
+                      <FaBell className="mr-2" /> Notifications
+                    </Link>
+                  </li>
+                  <li>
+                    <button className="flex items-center w-full text-left px-4 py-2 hover:bg-gray-200" onClick={() => { onLogout(); closeMenu(); }}>
+                      <FaSignOutAlt className="mr-2" /> Log out
+                    </button>
+                  </li>
                 </ul>
               )}
             </li>
           </>
         ) : userType === 'admin' ? (
           <>
-            <li><Link to="/dashboard" className='link' onClick={closeMenu}>Dashboard</Link></li>
-            <li><Link to="/users" className='link' onClick={closeMenu}>Manage Users</Link></li>
-            <li><Link to="/jobs" className='link' onClick={closeMenu}>Manage Jobs</Link></li>
-            <li className="dropdown">
-              <button className="dropdown-toggle link" onClick={toggleDropdown}>
-                <FaUser className="icon" />
+            <li className="mb-5 md:mb-0 md:ml-8">
+              <Link to="/dashboard" className="flex justify-center items-center text-white no-underline mr-2 hover:text-[#365c36]" onClick={closeMenu}>Dashboard</Link>
+            </li>
+            <li className="mb-5 md:mb-0 md:ml-8">
+              <Link to="/users" className="flex justify-center items-center text-white no-underline mr-2 hover:text-[#365c36]" onClick={closeMenu}>Manage Users</Link>
+            </li>
+            <li className="mb-5 md:mb-0 md:ml-8">
+              <Link to="/jobs" className="flex justify-center items-center text-white no-underline mr-2 hover:text-[#365c36]" onClick={closeMenu}>Manage Jobs</Link>
+            </li>
+            <li className="relative inline-block">
+              <button className="flex justify-center items-center text-white no-underline mr-2 hover:text-[#365c36]" onClick={toggleDropdown}>
+                <FaUser className="mr-2" />
               </button>
               {isDropdownOpen && (
-                <ul className="dropdown-menu">
-                  <li><button className='dropdown-link' onClick={() => { onLogout(); closeMenu(); }}>Log out</button></li>
+                <ul className="absolute right-0 mt-2 bg-white shadow-lg z-50 w-40 text-black list-none p-0 rounded-md">
+                  <li>
+                    <Link to="/adminprofile" className="flex items-center px-4 py-2 hover:bg-gray-200" onClick={closeMenu}>
+                      <FaUser className="mr-2" /> Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <button className="flex items-center w-full text-left px-4 py-2 hover:bg-gray-200" onClick={() => { onLogout(); closeMenu(); }}>
+                      <FaSignOutAlt className="mr-2" /> Log out
+                    </button>
+                  </li>
                 </ul>
               )}
             </li>
           </>
         ) : null}
-        {isOpen && (
-          <li className="close-menu" onClick={toggleMenu}>
-            <FaTimes className="close-icon" />
-          </li>
-        )}
       </ul>
-      <div className="menu-icon" onClick={toggleMenu}>
-        {isOpen ? <FaTimes /> : <FaBars />}
-      </div>
-      {isOpen && <div className={`overlay ${isOpen ? 'show' : ''}`} onClick={toggleMenu}></div>}
+      <button className="md:hidden text-white" onClick={toggleMenu}>
+        {isOpen ? <FaTimes size={30} /> : <FaBars size={30} />}
+      </button>
     </nav>
   );
 };

@@ -1,8 +1,8 @@
-// src/Components/JobMap.jsx
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import './../../index.css'
 
 // Import marker icon images
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
@@ -51,11 +51,10 @@ const JobMap = () => {
   ];
 
   return (
-    <div className="map-box">
-      <MapContainer center={[12.8797, 121.7740]} zoom={6} style={{ height: '400px', width: '100%' }}>
+    <div className="relative w-full h-[400px]">
+      <MapContainer center={[12.8797, 121.7740]} zoom={6} className="absolute inset-0">
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
 
         {jobLocations.map((job, index) => (

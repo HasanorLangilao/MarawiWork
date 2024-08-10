@@ -1,23 +1,24 @@
 import React from 'react';
-import './JobList.css';
+import './../../index.css'
 
 const JobList = () => {
   const jobs = []; // Replace with actual job data
 
   return (
-    <div className="job-list-layout">
-      <div className="jobs-available">
-        <div className="jobs-available-box">
-          <h2>Jobs Available</h2>
-          <div className="job-cards">
+    <div className="flex gap-5 p-5 flex-col md:flex-row">
+      {/* Jobs Available Container */}
+      <div className="flex-1">
+        <div className="border border-gray-300 p-4 bg-gray-50 rounded-md">
+          <h2 className="text-2xl mb-4">Jobs Available</h2>
+          <div className="flex flex-col gap-4 max-h-[30em] overflow-y-auto">
             {jobs.length > 0 ? (
               jobs.map((job, i) => (
-                <div className="job-card" key={i}>
+                <div className="border border-gray-300 p-4 bg-gray-50 rounded-md" key={i}>
                   {/* Job content here */}
                 </div>
               ))
             ) : (
-              <div className="no-jobs">
+              <div className="flex justify-center items-center text-center pt-4 pb-3 text-lg">
                 No Jobs available according to your preferences
               </div>
             )}
@@ -25,20 +26,23 @@ const JobList = () => {
         </div>
       </div>
 
-      <div className="filters-right">
-        <div className="filter categories">
-          <p className="filter-title">Categories</p>
-          <ul className="filter-list">
-            <li className="filter-item">Category 1</li>
-            <li className="filter-item">Category 2</li>
+      {/* Filters Container */}
+      <div className="w-1/3 flex flex-col gap-6">
+        {/* Categories Filter */}
+        <div className="border border-gray-300 p-4 bg-gray-50 rounded-md">
+          <p className="text-lg font-bold mb-2">Categories</p>
+          <ul className="list-none p-0 flex flex-col gap-2">
+            <li className="text-sm cursor-pointer hover:text-yellow-400">Category 1</li>
+            <li className="text-sm cursor-pointer hover:text-yellow-400">Category 2</li>
           </ul>
         </div>
-        
-        <div className="filter locations">
-          <p className="filter-title">Job Locations</p>
-          <ul className="filter-list">
-            <li className="filter-item">Location 1</li>
-            <li className="filter-item">Location 2</li>
+
+        {/* Job Locations Filter */}
+        <div className="border border-gray-300 p-4 bg-gray-50 rounded-md">
+          <p className="text-lg font-bold mb-2">Job Locations</p>
+          <ul className="list-none p-0 flex flex-col gap-2">
+            <li className="text-sm cursor-pointer hover:text-yellow-400">Location 1</li>
+            <li className="text-sm cursor-pointer hover:text-yellow-400">Location 2</li>
           </ul>
         </div>
       </div>
