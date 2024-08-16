@@ -11,8 +11,10 @@ const SeekerProfile = () => {
   const [skills, setSkills] = useState(["JavaScript", "React", "Node.js"]);
   const [isEditing, setIsEditing] = useState(false);
   const [newSkills, setNewSkills] = useState(skills.join(", ")); // State for editable skills
+  const [resume, setResume] = useState(null); // State for resume
 
   const fileInputRef = useRef(null);
+  const resumeInputRef = useRef(null);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -27,6 +29,17 @@ const SeekerProfile = () => {
 
   const triggerFileInput = () => {
     fileInputRef.current.click();
+  };
+
+  const handleResumeUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setResume(file.name); // Storing file name or process file as needed
+    }
+  };
+
+  const triggerResumeInput = () => {
+    resumeInputRef.current.click();
   };
 
   const handleEditClick = () => {
@@ -67,7 +80,7 @@ const SeekerProfile = () => {
         <div className="flex flex-col md:flex-row w-full mb-10">
           {/* Profile Left */}
           <div className="mt-[100px] flex flex-col items-center w-full">
-          <h2 className="mt-0 mb-5 text-3xl">My Profile</h2>
+            <h2 className="mt-0 mb-5 text-3xl">My Profile</h2>
             {/* Profile Picture Container */}
             <div className="relative flex flex-col items-center">
               <img 
@@ -85,7 +98,18 @@ const SeekerProfile = () => {
               />
             </div>
             {!isEditing ? (
-              <button className="py-2 px-5 bg-customGray text-white rounded-md cursor-pointer mt-2 hover:bg-gray-600" onClick={handleEditClick}>Edit Profile</button>
+              <>
+                <button className="py-2 px-5 bg-customGray text-white rounded-md cursor-pointer mt-2 hover:bg-gray-600" onClick={handleEditClick}>Edit Profile</button>
+                <button className="py-2 px-5 bg-blue-600 text-white rounded-md cursor-pointer mt-2 hover:bg-blue-700" onClick={triggerResumeInput}>Upload Resume</button>
+                <input 
+                  type="file" 
+                  accept=".pdf,.doc,.docx" 
+                  onChange={handleResumeUpload} 
+                  className="hidden" 
+                  ref={resumeInputRef}
+                />
+                {resume && <p className="mt-2 text-green-600">Resume: {resume}</p>}
+              </>
             ) : (
               <>
                 <button className="py-2 px-5 bg-gray-600 text-white rounded-md cursor-pointer mt-2 hover:bg-gray-700" onClick={handleSave}>Save</button>

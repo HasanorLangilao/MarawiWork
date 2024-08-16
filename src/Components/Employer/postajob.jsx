@@ -48,7 +48,7 @@ const PostJob = () => {
                 </div>
                 <div className="flex gap-5 mb-5">
                     <div className="flex flex-col w-1/2">
-                        <label className="text-sm font-bold mb-1">Company Logo</label>
+                        <label className="text-sm font-bold mb-1">Business Permit</label>
                         <input type="file" name="companyLogo" accept="image/*" required className="p-2 border border-gray-300 rounded-md text-base" />
                     </div>
                     <div className="flex flex-col w-1/2">

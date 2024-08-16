@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SeekNotifications() {
   const [notifications, setNotifications] = useState([
@@ -8,6 +9,7 @@ function SeekNotifications() {
       message: 'You matched with a job: Software Engineer at ABC Corporation',
       timestamp: '2023-03-01T10:00:00.000Z',
       read: false,
+      jobId: 101, // Added jobId for navigation
     },
     {
       id: 2,
@@ -15,6 +17,7 @@ function SeekNotifications() {
       message: 'You have been invited for an interview at DEF Startups',
       timestamp: '2023-03-02T11:00:00.000Z',
       read: true,
+      jobId: 102, // Added jobId for navigation
     },
     {
       id: 3,
@@ -22,25 +25,23 @@ function SeekNotifications() {
       message: 'Unfortunately, you were not selected for the position at GHI Inc.',
       timestamp: '2023-03-03T12:00:00.000Z',
       read: false,
+      jobId: 103, // Added jobId for navigation
     },
   ]);
 
   const [unreadCount, setUnreadCount] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unreadNotifications = notifications.filter((notification) => !notification.read);
     setUnreadCount(unreadNotifications.length);
   }, [notifications]);
 
-  const handleMarkAsRead = (id) => {
-    setNotifications((prevNotifications) =>
-      prevNotifications.map((notification) => {
-        if (notification.id === id) {
-          return { ...notification, read: true };
-        }
-        return notification;
-      })
-    );
+  const handleViewJob = (id) => {
+    const job = notifications.find((notification) => notification.id === id);
+    if (job) {
+      navigate(`/job/${job.jobId}`); // Navigate to the job details page
+    }
   };
 
   return (
@@ -63,14 +64,12 @@ function SeekNotifications() {
                 {new Date(notification.timestamp).toLocaleString()}
               </p>
             </div>
-            {!notification.read && (
-              <button
-                className="bg-gray-700 text-white py-2 px-4 text-sm rounded hover:bg-gray-600"
-                onClick={() => handleMarkAsRead(notification.id)}
-              >
-                Mark as Read
-              </button>
-            )}
+            <button
+              className="bg-gray-700 text-white py-2 px-4 text-sm rounded hover:bg-gray-600"
+              onClick={() => handleViewJob(notification.id)}
+            >
+              View Job
+            </button>
           </li>
         ))}
       </ul>
