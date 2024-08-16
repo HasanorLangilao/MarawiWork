@@ -3,34 +3,35 @@ import Img from '../../../assets/marawiwork.jpg';
 import { FaTimes } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-const Employeesignup = ({ onToggleSignIn }) => {
+const Employeesignup = ({ handleClose }) => {
   const navigate = useNavigate();
 
   const handleCloseClick = () => {
-    if (onToggleSignIn) {
-      onToggleSignIn(); // Call the function to hide or close the form
+    if (handleClose) {
+      handleClose(); // Call the function to hide or close the form
     }
     navigate('/'); // Navigate to the Home page
   };
 
   return (
-    <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 flex justify-center items-center bg-black/50 z-50">
       <div className="bg-white p-8 rounded-lg w-[90%] max-w-[520px] max-h-[800px] relative text-center text-sm overflow-auto mt-16 md:mt-20 lg:mt-24">
         <button
           onClick={handleCloseClick}
-          className="absolute top-4 right-4 text-gray-600 hover:text-gray-800"
+          className="absolute top-4 right-4 text-gray-600 hover:text-gray-800 z-60"
         >
           <FaTimes size={16} />
         </button>
         <div className="flex justify-center mb-4">
           <img src={Img} alt="Company Logo" className="h-20 w-20 rounded-full object-cover" />
         </div>
-        <h2 className="text-lg font-bold mb-4">Create Account as a Job Seeker</h2>
+        <h2 className="text-lg font-bold mb-4">Create account as an Employer</h2>
         <div className="mb-6 text-md flex justify-center space-x-4">
           <a href="/Employeesignup" className="text-green-600 hover:underline">Employee</a>
           <span>|</span>
           <a href="/Employersignup" className="text-green-600 hover:underline">Employer</a>
         </div>
+
         <div className="grid grid-cols-2 gap-4">
           <div className="col-span-1">
             <label htmlFor="firstName" className="block text-left">First Name</label>

@@ -53,24 +53,28 @@ const App = () => {
         <Navbar userType={userType} onLogout={handleLogout} />
         <main className="flex-grow">
           <Routes>
+            {/* Always redirect to landing page if user is not authenticated */}
             <Route path="/" element={<Landing />} />
             <Route path="/signin" element={<SignIn handleClose={() => {}} setUserType={handleLogin} />} />
             <Route path="/Employeesignup" element={<EmployeeAccount />} />
             <Route path="/Employersignup" element={<EmployerAccount />} />
 
-            {userType === 'jobseeker' && (
-            <>
-              <Route path="/seekhome" element={<JobseekerHome />} />
-              <Route path="/seekjobs" element={<Seekjobs />} />
-              <Route path="/applications" element={<Applications />} />
-              <Route path="/seekerprofile" element={<SeekerProf />} />
-              <Route path="/seeknotifications" element={<SeekerNotif />} />
-              <Route path="/job/:jobId" element={<ViewJob />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/Jobmap" element={<Jobmap />} />
-            </>
+            {userType === 'jobseeker' ? (
+              <>
+                <Route path="/seekhome" element={<JobseekerHome />} />
+                <Route path="/seekjobs" element={<Seekjobs />} />
+                <Route path="/applications" element={<Applications />} />
+                <Route path="/seekerprofile" element={<SeekerProf />} />
+                <Route path="/seeknotifications" element={<SeekerNotif />} />
+                <Route path="/job/:jobId" element={<ViewJob />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/Jobmap" element={<Jobmap />} />
+              </>
+            ) : (
+              <Route path="*" element={<Navigate to="/" />} />
             )}
-            {userType === 'employer' && (
+
+            {userType === 'employer' ? (
               <>
                 <Route path="/emphome" element={<EmployerHome />} />
                 <Route path="/applicants" element={<Applicants />} />
@@ -81,14 +85,18 @@ const App = () => {
                 <Route path="/postajob" element={<PostaJob />} />
                 <Route path="/about" element={<About />} />
               </>
+            ) : (
+              <Route path="*" element={<Navigate to="/" />} />
             )}
 
-            {userType === 'admin' && (
+            {userType === 'admin' ? (
               <>
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/users" element={<Users />} />
                 <Route path="/jobs" element={<Jobs />} />
               </>
+            ) : (
+              <Route path="*" element={<Navigate to="/" />} />
             )}
 
             {/* Default redirection based on userType */}
