@@ -28,8 +28,8 @@ const Seekhome = () => {
 
   return (
     <section className='text-center text-gray-800 mt-[45px] text-[25px]'>
-      <h1 className = 'font-bold text-[30px]'>WELCOME TO MARAWI-WORK</h1>
-      <p className = 'text-[23px]'>Job Search Made Easy: We connect you with Job Opportunities</p>
+      <h1 className='font-bold text-[30px]'>WELCOME TO MARAWI-WORK</h1>
+      <p className='text-[23px]'>Job Search Made Easy: We connect you with Job Opportunities</p>
       
       <div className='p-4'>
         <div className='pb-4 text-2xl'>
@@ -67,6 +67,6 @@ const Seekhome = () => {
       </div>
     </section>
   );
-}
+};
 
 export default Seekhome;

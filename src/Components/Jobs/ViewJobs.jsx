@@ -46,7 +46,7 @@ function ViewJob() {
     <div className="max-w-[1200px] w-full mx-auto my-10 p-5 bg-gray-100 border border-gray-300 rounded-lg shadow-md relative">
         <button
           onClick={() => navigate(-1)} // Navigate back
-          className="absolute top-4 left-4 text-gray-700 hover:text-gray-900"
+          className="absolute top-4 -left-[19rem] text-gray-700 hover:text-gray-900"
         >
           <FaArrowLeft size={20} />
         </button>

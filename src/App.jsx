@@ -104,6 +104,7 @@ const App = () => {
               userType ? (
                 userType === 'jobseeker' ? <Navigate to="/seekhome" /> :
                 userType === 'employer' ? <Navigate to="/emphome" /> :
+                userType === 'admin' ? <Navigate to ="/dashboard" /> :
                 <Navigate to="/dashboard" />
               ) : <Navigate to="/" />
             } />

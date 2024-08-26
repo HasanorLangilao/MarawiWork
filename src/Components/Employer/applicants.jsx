@@ -75,7 +75,7 @@ const Applicants = () => {
           applicants.map((applicant) => (
             <div
               key={applicant.id}
-              className="bg-white p-4 border border-gray-300 rounded-lg shadow-sm flex items-center gap-4"
+              className="bg-white p-4 border border-gray-300 rounded-lg shadow-lg flex items-center gap-4" // Updated with shadow-lg
             >
               <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-gray-600">
                 {/* Placeholder for applicant profile picture */}

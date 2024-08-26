@@ -84,7 +84,7 @@ const empmyjobs = () => {
                 className="hover:bg-gray-600 text-white text-base py-2 px-4 rounded bg-gray-700 w-full"
                 onClick={() => handleViewApplications(job.id)} // Call handleViewApplications with jobId
               >
-                View Applications
+                View Applicants
               </button>
               <div className="flex space-x-2 w-full">
                 <button className="bg-green-500 text-white text-base py-2 px-2 rounded hover:bg-green-600 w-1/2">

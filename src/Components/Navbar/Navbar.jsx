@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/Logo.png';
 import { FaSignInAlt, FaSuitcase, FaBars, FaTimes, FaUser, FaBell, FaClipboardList, FaSignOutAlt } from 'react-icons/fa';
+import Sidebar from './../Admin/Sidebar'
 
 const Navbar = ({ userType, onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -71,7 +72,7 @@ const Navbar = ({ userType, onLogout }) => {
               {isDropdownOpen && (
                 <ul className="absolute right-0 mt-2 bg-white text-black list-none p-0 rounded-md shadow-lg">
                   <li>
-                    <Link to="/seekerprofile" className="flex items-center px-4 py-2 hover:bg-gray-200" onClick={closeMenu}>
+                    <Link to="/seekerprofile" className="flex items-center px-4 py-2 hover:bg-gray" onClick={closeMenu}>
                       <FaUser className="mr-2" /> Profile
                     </Link>
                   </li>
